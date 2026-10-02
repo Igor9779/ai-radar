@@ -11,6 +11,7 @@ const freeserpProxy = {
 
 export default defineConfig({
   plugins: [react()],
+  base: '/',
   server: { proxy: freeserpProxy },
   preview: { proxy: freeserpProxy },
 });

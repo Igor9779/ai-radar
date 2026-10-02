@@ -4,7 +4,7 @@ import { createServer } from 'node:http';
 import { extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const projectDirectory = fileURLToPath(new URL('.', import.meta.url));
+const projectDirectory = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const distDirectory = resolve(projectDirectory, 'dist');
 const port = Number(process.env.PORT ?? 4173);
 

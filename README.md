@@ -44,7 +44,11 @@ The catalog sends these parameters when applicable:
 
 FreeSerp returns an exact `total` for the current filter set. Its documented paging window ends at 10,000 results. The `went_live` value means FreeSerp first confirmed that a site was reachable; it is not necessarily the product's official launch date. The “New AI Tools” label uses that signal and should be understood accordingly.
 
-The app calls `/api/freeserp`. Vite forwards this route during development and preview. For a built deployment, `server.js` provides the same-origin API proxy and static file server (`npm start`). Static-only hosting needs an equivalent proxy or rewrite for `/api/freeserp`.
+The app calls `/api/freeserp`. Vite forwards this route during development and preview. Direct browser requests to FreeSerp are blocked by its CORS response, so production uses the Vercel Function in `api/freeserp.ts` as a same-origin proxy. For local hosting of the production build, `scripts/local-server.js` provides the same proxy and static server (`npm start`).
+
+## Vercel Deployment
+
+Import the repository into Vercel and use the Vite framework preset, `npm run build` as the build command, and `dist` as the output directory. The `/api/freeserp` function is discovered from `api/freeserp.ts`; no environment variables or additional Vercel configuration are required.
 
 ## Development Workflow
 
