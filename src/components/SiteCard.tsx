@@ -76,7 +76,7 @@ export function SiteCard({ site, language, translations }: SiteCardProps) {
   const hasDomainRating = typeof site.dr === 'number' && Number.isFinite(site.dr);
 
   return (
-    <article className="site-card">
+    <article className="site-card" data-cy="site-card">
       <div className="site-card__identity">
         <span className="site-card__monogram" aria-hidden="true">
           {monogram}

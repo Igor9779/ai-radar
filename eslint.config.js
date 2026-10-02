@@ -29,4 +29,16 @@ export default tseslint.config(
       globals: globals.node,
     },
   },
+  {
+    files: ['cypress/**/*.ts', 'cypress.config.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.mocha,
+        Cypress: 'readonly',
+        cy: 'readonly',
+        expect: 'readonly',
+      },
+    },
+  },
 );

@@ -14,13 +14,19 @@ export function SiteHeader({ language, onLanguageChange, translations }: SiteHea
         <SiteBrand />
 
         <nav className="header-actions" aria-label={translations.navigationLabel}>
-          <div className="language-switch" role="group" aria-label={translations.languageSelector}>
+          <div
+            className="language-switch"
+            data-cy="language-selector"
+            role="group"
+            aria-label={translations.languageSelector}
+          >
             <button
               aria-label={translations.switchToEnglish}
               aria-pressed={language === 'en'}
               className={
                 language === 'en' ? 'language-switch__option is-active' : 'language-switch__option'
               }
+              data-cy="language-en"
               data-testid="language-en"
               onClick={() => onLanguageChange('en')}
               type="button"
@@ -34,6 +40,7 @@ export function SiteHeader({ language, onLanguageChange, translations }: SiteHea
               className={
                 language === 'uk' ? 'language-switch__option is-active' : 'language-switch__option'
               }
+              data-cy="language-uk"
               data-testid="language-uk"
               onClick={() => onLanguageChange('uk')}
               type="button"

@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "index": "sites",
+  "query": null,
+  "total": 36,
+  "count": 1,
+  "from": 0,
+  "size": 12,
+  "sort": "relevance",
+  "order": "desc",
+  "filters": {
+    "ai_startups": true
+  },
+  "took_ms": 8,
+  "engine_ms": 6,
+  "results": [
+    {
+      "domain": "example.ai",
+      "url": "https://example.ai",
+      "title": "Example AI Product",
+      "ai_summary": "A fixture product for deterministic catalog tests.",
+      "category": "AI",
+      "ai_categories": ["AI Chatbot & Assistant"],
+      "dr": 55,
+      "went_live": "2026-01-10",
+      "first_seen": "2026-01-01",
+      "tld": "ai",
+      "http_status": 200,
+      "real_site": 1,
+      "content_length": 1234,
+      "html_size": 5678,
+      "fetched_at": "2026-09-30",
+      "ip": "192.0.2.1",
+      "webserver": "fixture",
+      "_score": 1.25
+    }
+  ]
+}

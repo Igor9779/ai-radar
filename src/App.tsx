@@ -123,7 +123,7 @@ function App() {
 
         <NewToolsSection language={language} translations={t} />
 
-        <section className="catalog" aria-label={t.catalogLabel}>
+        <section className="catalog" aria-label={t.catalogLabel} data-cy="site-results">
           <CatalogFilters
             category={category}
             hasFilters={hasFilters}

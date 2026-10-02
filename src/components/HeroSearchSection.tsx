@@ -30,7 +30,9 @@ export function HeroSearchSection({
       <p className="eyebrow">
         <span className="eyebrow__dot" /> {translations.heroEyebrow}
       </p>
-      <h1 id="hero-title">{translations.heroTitle}</h1>
+      <h1 id="hero-title" data-cy="hero-title">
+        {translations.heroTitle}
+      </h1>
       <p className="hero__subtitle">{translations.heroSubtitle}</p>
 
       <form
@@ -47,6 +49,7 @@ export function HeroSearchSection({
           <input
             id="catalog-search"
             autoComplete="off"
+            data-cy="search-input"
             data-testid="search-input"
             onChange={(event) => onSearchInputChange(event.target.value)}
             placeholder={translations.searchPlaceholder}

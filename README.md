@@ -24,6 +24,12 @@ AI Radar is a responsive catalog for discovering AI products. It retrieves site 
 - TanStack Query
 - CSS
 
+## Development and Test Tooling
+
+- ESLint
+- Prettier
+- Cypress for end-to-end tests
+
 ## API
 
 The app uses the public [FreeSerp API](https://freeserp.ai/docs.php), requesting the `sites` index with `ai_startups=1`.
@@ -40,12 +46,14 @@ FreeSerp returns an exact `total` for the current filter set. Its documented pag
 
 The app calls `/api/freeserp`. Vite forwards this route during development and preview. For a built deployment, `server.js` provides the same-origin API proxy and static file server (`npm start`). Static-only hosting needs an equivalent proxy or rewrite for `/api/freeserp`.
 
-## Local Development
+## Development Workflow
 
 ```bash
 npm install
 npm run dev
 ```
+
+Cypress uses `http://127.0.0.1:5173` as its base URL. Keep Vite running on that default port in one terminal while running Cypress from another.
 
 ## Production Build
 
@@ -56,25 +64,38 @@ npm run preview
 
 `npm run preview` serves the built app locally. To run the included Node server with its API proxy, build first and then use `npm start`.
 
+## Testing
+
+Cypress provides five end-to-end tests in `cypress/e2e/catalog.cy.ts`. Its configuration is in `cypress.config.ts`, and the FreeSerp response fixture is `cypress/fixtures/sites.json`.
+
+Four tests use `cy.intercept()` and the fixture to cover initial catalog rendering, search with URL state, Next/Previous pagination with URL state, and switching between English and Ukrainian. The fifth is an unmocked smoke test that requests real FreeSerp results through the Vite proxy, so it requires network access to the public API.
+
+```bash
+npm run cy:open
+npm run cy:run
+```
+
+`npm run cy:open` opens Cypress in interactive mode. `npm run cy:run` runs the E2E suite headlessly.
+
 ## AI-Assisted Development
 
 Codex was used for:
 
 - project scaffolding;
-- API integration;
-- component implementation;
-- debugging;
-- refactoring;
-- code review.
+- FreeSerp API and TanStack Query integration;
+- React component implementation;
+- debugging and refactoring;
+- Cypress test implementation and test failure analysis;
+- documentation and code review.
 
-Generated code was reviewed, tested, and adjusted during development.
+The developer reviewed generated code, ran the checks and tests, and adjusted the implementation and documentation during development.
 
 ## What Could Be Improved
 
 - Add favorites.
 - Add detailed pages for individual tools.
-- Add automated unit and end-to-end tests.
+- Expand automated coverage with unit tests and additional edge-case E2E tests.
 - Add advanced filters supported by FreeSerp.
 - Tune caching and stale-data behavior using production usage data.
 - Display richer tool metadata when the API provides it consistently.
-- Keep category values synchronized with changes to FreeSerp's taxonomy. The live API accepted the current “AI Chatbot & Assistant” value during review, while the current documentation lists “Chatbot & Assistant”.
+- Keep category values synchronized with changes to FreeSerp's taxonomy.

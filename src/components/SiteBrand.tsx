@@ -4,7 +4,7 @@ interface SiteBrandProps {
 
 export function SiteBrand({ className = '' }: SiteBrandProps) {
   return (
-    <a className={`brand ${className}`.trim()} href="#top" aria-label="AI Radar">
+    <a className={`brand ${className}`.trim()} href="#top" aria-label="AI Radar" data-cy="brand">
       <span className="brand__mark" aria-hidden="true">
         <svg viewBox="0 0 32 32" fill="none">
           <circle cx="16" cy="16" r="11.5" />
